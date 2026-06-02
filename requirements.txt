@@ -1,1 +1,23 @@
+torch>=2.2
+torch-geometric>=2.5
+gvp-pytorch>=0.1
+fair-esm>=2.0
+biopython>=1.83
+MDAnalysis>=2.7
+freesasa>=2.1
+hydra-core>=1.3
+omegaconf>=2.3
+wandb>=0.17
+roma>=1.4
+einops>=0.7
+numpy>=1.26
+pandas>=2.1
+scikit-learn>=1.4
+matplotlib>=3.8
+seaborn>=0.13
+tqdm>=4.66
+rich>=13
+pytest>=8
+
+
 
