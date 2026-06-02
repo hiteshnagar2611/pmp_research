@@ -1,0 +1,54 @@
+# PMPGen Phase 2: De novo generation model configuration
+
+model:
+  pmpgen:
+    # Input/output dimensions
+    n_res_in: 256
+    n_res_out: 256
+    n_tokens: 21              # Standard amino acids + stop
+    
+    # Architecture
+    hidden_dim: 256
+    n_layers: 6
+    n_heads: 8
+    dropout: 0.1
+    
+    # Conditioning
+    conditioning_dim: 256
+    conditioning_layers: 2
+    
+    # Noise schedule (novel)
+    noise_schedule_type: md_informed
+    noise_schedule:
+      min_sigma: 0.01
+      max_sigma: 1.0
+      n_steps: 100
+      rmsf_scale: 1.0
+    
+    # SE(3) Flow
+    flow_type: ot                # optimal transport
+    flow_steps: 100
+    
+    # IPA Denoiser
+    ipa_denoiser:
+      hidden_dim: 256
+      n_layers: 6
+      n_heads: 8
+      dropout: 0.1
+      num_edge_features: 40
+    
+    # Membrane guidance (novel)
+    mem_guidance:
+      hidden_dim: 256
+      num_iterative_steps: 5
+      guidance_scale: 1.0
+    
+    # Sequence decoder
+    sequence_decoder:
+      hidden_dim: 128
+      n_layers: 3
+      n_heads: 8
+    
+    # Initialization
+    init_type: kaiming_uniform
+    init_gain: 0.02
