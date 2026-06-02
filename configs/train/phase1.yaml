@@ -1,0 +1,66 @@
+# DynaMo Phase 1 training configuration
+
+train:
+  # Training loop
+  max_epochs: 100
+  max_steps: -1                # -1 means no limit
+  
+  # Optimizer
+  optimizer:
+    type: adam
+    lr: 1e-4
+    betas: [0.9, 0.999]
+    weight_decay: 1e-5
+    eps: 1e-8
+  
+  # Learning rate scheduler
+  lr_scheduler:
+    type: cosine_with_warmup
+    warmup_steps: 500
+    total_steps: 100000
+    min_lr: 1e-6
+  
+  # Losses
+  losses:
+    focal:
+      weight: 1.0
+      gamma: 2.0
+      alpha: 0.25
+    patch_contiguity:
+      weight: 0.2
+      temperature: 0.07
+    contrastive:
+      weight: 0.1
+      margin: 1.0
+  
+  # Training
+  gradient_clip_val: 1.0
+  gradient_clip_algorithm: norm
+  log_every_n_steps: 10
+  val_check_interval: 0.25    # Check validation 4 times per epoch
+  
+  # Checkpointing
+  checkpoint_dir: outputs/checkpoints/phase1
+  save_top_k: 3
+  save_last: true
+  early_stopping_patience: 10
+  
+  # Logging
+  use_wandb: true
+  wandb_project: pmp-research
+  wandb_entity: null
+  
+  # Device
+  devices: [0]                 # GPU indices
+  strategy: auto
+  precision: 32                # 32-bit or 16-bit (mixed)
+  
+  # Data
+  batch_size: 4
+  num_workers: 4
+  pin_memory: true
+  
+  # Reproducibility
+  seed: 42
+  deterministic: true
+  benchmark: false
