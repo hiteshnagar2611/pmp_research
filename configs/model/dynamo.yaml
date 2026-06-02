@@ -1,0 +1,44 @@
+# DynaMo Phase 1: Binding prediction model configuration
+
+model:
+  dynamo:
+    # Input/output dimensions
+    node_s_in: 147           # PLM(128) + dihedral(6) + phys(4) + exposure(5) + pmp(4)
+    node_s_out: 1           # Binary binding prediction
+    node_v_in: 6            # Backbone frame (3) + displacement (3)
+    node_v_out: 3           # Output frame
+    
+    # Architecture
+    hidden_s_dim: 256
+    hidden_v_dim: 256
+    n_layers: 3
+    n_heads: 8
+    dropout: 0.1
+    
+    # GVP encoder
+    gvp_layers: 3
+    gvp_hidden_dim: 128
+    gvp_hidden_v_dim: 16
+    
+    # Conformational attention (novel)
+    conf_attention:
+      n_snapshots: 5
+      temperature_init: 1.0
+      n_heads: 8
+    
+    # Membrane geometry (novel)
+    geometry_path:
+      hidden_dim: 128
+      n_heads: 8
+    
+    # Physicochemical gating (novel)
+    phys_gate:
+      hidden_dim: 64
+      
+    # Classifier
+    classifier_type: simple  # simple, deep, ensemble
+    classifier_hidden: 64
+    
+    # Initialization
+    init_type: kaiming_uniform
+    init_gain: 0.02
