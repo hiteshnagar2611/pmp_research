@@ -16,7 +16,7 @@ import torch.nn as nn
 from typing import Tuple
 import sys
 sys.path.insert(0, '/home/claude/pmp_research/src')
-from models.shared.se3_utils import so3_exp, so3_log, interpolate_frames, frame_velocity
+from ..shared.se3_utils import so3_exp, so3_log, interpolate_frames, frame_velocity
 
 
 class OTFlowInterpolant(nn.Module):

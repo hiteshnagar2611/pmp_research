@@ -8,11 +8,11 @@ membrane geometry path, cross-attention fusion, and physicochemical gating.
 from __future__ import annotations
 import torch
 import torch.nn as nn
-from fusion import FeatureFusion
-from conf_attention import ConformationalAttentionPool
-from cross_attention import StructureDynamicsCrossAttention
-from geometry_path import MembraneGeometryPath
-from phys_gate import PhysiochemicalGate
+from .fusion import FeatureFusion
+from .conf_attention import ConformationalAttentionPool
+from .cross_attention import StructureDynamicsCrossAttention
+from .geometry_path import MembraneGeometryPath
+from .phys_gate import PhysiochemicalGate
 
 
 class DynaMo(nn.Module):

@@ -21,15 +21,15 @@ import torch
 import torch.nn as nn
 import pytorch_lightning as pl
 
-from src.models.pmpgen.conditioning import ConditioningEncoder
-from src.models.pmpgen.noise_schedule import MDInformedNoiseSchedule
-from src.models.pmpgen.se3_flow import SE3FlowInterpolant
-from src.models.pmpgen.ipa_denoiser import IPADenoiser
-from src.models.pmpgen.mem_guidance import MembraneGuidance
-from src.models.pmpgen.sequence_decoder import SequenceDecoder
-from src.models.pmpgen.sampler import PMPGenSampler, ValidationCascade
-from src.training.losses import CombinedPMPGenLoss
-from src.training.metrics import GenerationQualityMetrics
+from .conditioning import ConditioningEncoder
+from .noise_schedule import MDInformedNoiseSchedule
+from .se3_flow import SE3FlowInterpolant
+from .ipa_denoiser import IPADenoiser
+from .mem_guidance import MembraneGuidance
+from .sequence_decoder import SequenceDecoder
+from .sampler import PMPGenSampler, ValidationCascade
+from ..training.losses import CombinedPMPGenLoss
+from ..training.metrics import GenerationQualityMetrics
 
 
 class PMPGen(pl.LightningModule):
